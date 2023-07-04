@@ -1,7 +1,7 @@
 defmodule Scraper do
   @url "https://starwars.fandom.com/wiki/Category:Mandalorian_weapons"
 
-  def scrape_weapon_names do
+  def scrape_weapon do
     response = Crawly.fetch(@url)
 
     {:ok, document} = Floki.parse_document(response.body)

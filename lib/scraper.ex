@@ -9,10 +9,14 @@ defmodule Scraper do
     weapon_names =
       document
       |> Floki.find(".category-page__members-for-char a")
-      |> Floki.attribute("title")
-      |> Enum.filter(&(&1 != nil))
+      |> Enum.map(&parse_weapon_info/1)
 
-    IO.inspect(weapon_names)
-    weapon_names
+    Enum.uniq(weapon_names)
+  end
+
+  defp parse_weapon_info(element) do
+    title = Floki.attribute(element, "title")
+    url = Floki.attribute(element, "href")
+    {title, url}
   end
 end

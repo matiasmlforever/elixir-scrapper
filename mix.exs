@@ -1,9 +1,9 @@
-defmodule MyProject.MixProject do
+defmodule Scraper.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :elixir_scrapper,
+      app: :scraper,
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
@@ -11,10 +11,17 @@ defmodule MyProject.MixProject do
     ]
   end
 
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      mod: {Scraper.Application, []}
+    ]
+  end
+
   defp deps do
     [
-      {:httpoison, "~> 1.8"},
-      {:floki, "~> 0.26"}
+      {:crawly, "~> 0.15.0"},
+      {:floki, "~> 0.34.0"}
     ]
   end
 end

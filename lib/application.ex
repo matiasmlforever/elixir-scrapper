@@ -4,6 +4,9 @@ defmodule Scraper.Application do
   def start(_type, _args) do
     weapons = Scraper.scrape_weapon()
     Enum.each(weapons, &print_weapon_info/1)
+    # TODO: get weapons info(product information)
+
+    # TODO: persist weapons info
     {:ok, self()}
   end
 
